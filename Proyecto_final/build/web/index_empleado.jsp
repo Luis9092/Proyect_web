@@ -15,209 +15,196 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Formulario</title>
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
 
+        <link rel="stylesheet" href="css/estilo_empleado.css">
     </head>
     <body>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_empleado" onclick="Limpiar()">
+          <form  action="index.jsp">
+            <input class="btn_form" type="submit" value="Menu" />
+       
+        <button type="button" class="btn_form" data-toggle="modal" data-target="#modal_empleado" onclick="Limpiar()">
             Formulario
         </button>
+          </form>
+        <div class="container-fluid p-3 my-3 bg-light  text-black">
 
-        <div class="container p-3 my-3 bg-light  text-black">
-
-            <h5><center>Formulario Empleados :3</center> </h5>
-            <div class="modal fade" id="modal_empleado" role="dialog">
-                <div class="modal-dialog">
+            <div class="formulario_titulo">
+                <h5>Formulario Empleados :3</h5>
+            </div>
+            <br>
+            <div class="modal fade"  data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_empleado" role="dialog">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
-                        <div class="modal-body">
+                        <div class="modal-body  formula_modal">
+                            <form  action="index_puesto.jsp">
+                                <input class="enlaze_puesto" type="submit" value="Puestos" />
+                            </form>
 
-                            <form action="src_empleado" method="post" class="form-group">
-                                <label for="lbl_id"><b>ID:</b> </label>
-                                <input class="form-control" type="text" name="txt_id" id="txt_id" value="0" readonly>
-                                <label for="lbl_nombres"><b>Nombres:</b> </label>
-                                <input class="form-control" type="text" name="txt_nombres" id="txt_nombres" placeholder="Nombres" required>
-
-                                <label for="lbl_apellidos"><b>Apellidos:</b> </label>
-                                <input class="form-control" type="text" name="txt_apellidos" id="txt_apellidos" placeholder="Apellidos" required>
-
-                                <label for="lbl_direccion"><b>Direccion:</b> </label>
-                                <input class="form-control" type="text" name="txt_direccion" id="txt_direccion" placeholder="Pais, Lugar, Casa" required>
-
-                                <label for="lbl_telefono"><b>No. Telefono:</b> </label>
-                                <input class="form-control" type="number" name="txt_telefono" id="txt_telefono" placeholder="000000000" required>
-
-                                <label for="lbl_dpi"><b>No. DPI</b></label>
-                                <input  class="form-control"type="text" name="txt_dpi" id="txt_dpi" placeholder="--------------">
-
-                                <label for="lbl_genero"><b>Genero</b></label>
-
-                                <center>   
-                                    <div class="form-check form-check-inline  custom-radio">
-                                        <input class="form-check form-check-input"  name="gen" type="radio" id="uno" value="Masculino"  />Masculino           
-                                        <input class="form-check form-check-input" name="gen"  type="radio" id="dos" value="Femenino"  />Femenino
+                            <form action="src_empleado" method="post" class="formulario" class="form-group" id="formulario">
+                                <div class="formulario__grupo" id="grupo_txt_id">
+                                    <label for="lbl_id" class="formulario__label">ID:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_id" id="txt_id" value="0" readonly>
                                     </div>
-                                </center>
+                                </div>
+                                <!-- Nombresss -->
+                                <div class="formulario__grupo" id="grupo__txt_nombres">
+                                    <label for="lbl_puesto" class="formulario__label">Nombres: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_nombres" id="txt_nombres" pattern="[A-Z]{1}[a-zA-ÿ]{3,40}([ ][A-Z]{1}[a-zA-ÿ]{3,40})?" placeholder="Nombres"   required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Formato: Iniciales Mayusculas </p>
+                                </div>
 
-                                <br>
+                                <!-- Apellidos -->
+                                <div class="formulario__grupo" id="grupo__txt_apellidos">
+                                    <label for="lbl_apellidos" class="formulario__label">Apellidos: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_apellidos" id="txt_apellidos" pattern="[A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}[ ][A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}" placeholder="Apellidos"   required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Inciales Mayusculas </p>
+                                </div>
 
-                                <label for="lbl_fn"><b>Fecha Nacimiento:</b> </label>
-                                <input class="form-control" type="date" name="txt_fn" id="txt_fn" required placeholder="yyyy-MM-dd">
+                                <!-- Direccion -->
+                                <div class="formulario__grupo" id="grupo__txt_direccion">
+                                    <label for="lbl_direccion" class="formulario__label">Dirección: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_direccion" id="txt_direccion" pattern="[A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}[ ][A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}" placeholder="Direccion"  required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Lugar,Pais </p>
+                                </div>
 
-                                <label for="lbl_fn"><b>Fecha Inicio Laboral:</b> </label>
-                                <input class="form-control" type="date" name="txt_fni" id="txt_fni" required placeholder="yyyy-MM-dd">
+                                <!-- Telefono -->
+                                <div class="formulario__grupo" id="grupo__txt_telefono">
+                                    <label for="lbl_telefono" class="formulario__label">Telefono: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_telefono" id="txt_telefono" pattern="[+]{1}[0-9]{1,4}[ ][0-9]{7,14}" placeholder="+### ########"  required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">extension del pais, numero de telefono</p>
+                                </div>
 
-                                <br>
-                                <label for="lbl_puesto" ><b>Puestos</b></label>
+                                <!-- DPI-->
+                                <div class="formulario__grupo" id="grupo__txt_dpi">
+                                    <label for="lbl_dpi" class="formulario__label">DPI: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_dpi" id="txt_dpi" pattern="[0-9]{4}[ ][0-9]{5}[ ][0-9]{4}" placeholder="#### ##### ####"    required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Formato No valido</p>
+                                </div>
 
-                                <select name="drop_puestos" class="form-control custom-select mr-sm-2" id="drop_puestos" >
-                                    <%
-                                        Puesto puesto= new Puesto();
-                                        HashMap<String,String> drop= puesto.seleccionar();
-                                        for(String i:drop.keySet())
-                                        {
-                                            out.println("<option value="+i+">"+drop.get(i)+ "</option>");
-                                        }
-                                    %>
-                                </select>
-                                <br>
-                                <br>
-                                <center>    
-                                    <button  name="btn_agregar" id="btn_agregar" value="agregar" class="btn btn-primary">Agregar</button>
-                                    <button  name="btn_modificar" id="btn_modificar" value="modificar" class="btn btn-success ">Modificar</button>
-                                    <button  name="btn_eliminar" id="btn_eliminar" value="eliminar" class="btn btn btn-danger " onclick ="javascript:if (!confirm('¿Desea Eliminar'))
+                                <!-- Genero -->
+                                <div class="formulario__grupo" id="grupo_txt_genero">
+                                    <label for="genero" class="formulario__label">Genero:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input   name="gen" type="radio" id="uno" value="Masculino" required />Masculino           
+                                        <input    name="gen"  type="radio" id="dos" value="Femenino"  />Femenino
+
+                                    </div>
+                                </div>          
+
+                                <div class="formulario__grupo" id="grupo__txt_fn">
+                                    <label for="lbl_fn" class="formulario__label">Fecha Nacimiento:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input class="formulario__input" type="date" name="txt_fn" id="txt_fn" required placeholder="yyyy-MM-dd">
+                                    </div>
+                                </div>
+
+
+                                <div class="formulario__grupo" id="grupo__txt_fni">
+                                    <label for="genero" class="formulario__label">Fecha Ingreso:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input class="formulario__input" type="date" name="txt_fni" id="txt_fni" required placeholder="yyyy-MM-dd">
+                                    </div>
+                                </div>
+
+                                <div class="formulario__grupo" id="grupo__txt_puesto">
+                                    <label for="lbl_puesto" class="formulario__label">Puestos:</label>
+                                    <div class="formulario__grupo-input">
+                                        <select name="drop_puestos" class="formulario__input" id="drop_puestos" >
+                                            <%
+                                                Puesto puesto= new Puesto();
+                                                HashMap<String,String> drop= puesto.seleccionar();
+                                                for(String i:drop.keySet())
+                                                {
+                                                    out.println("<option value="+i+">"+drop.get(i)+ "</option>");
+                                                }
+                                            %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class=" formulario__grupo-btn-enviar">
+                                    <button  name="btn_agregar" id="btn_agregar" value="agregar"    class="formulario__btn " >Agregar</button>
+                                    <button  name="btn_modificar" id="btn_modificar" value="modificar" class="formulario__btn1" >Modificar</button>
+                                    <button  name="btn_eliminar" id="btn_eliminar" value="eliminar" class="formulario__btn2"  onclick ="javascript:if (!confirm('¿Desea Eliminar'))
                                                 return false"  >Eliminar</button>
-                                </center>
-
+                                </div>
                                 <br>
                             </form>
+                            <div class="modal-footer">
+                                <button  type="button" class="btn btn-warning mod_salir" onclick="recargar()"  onclick="unselect()" data-dismiss="modal">Salir</button>
+                            </div>
                         </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button  type="button" class="btn btn-warning text-white" onclick="unselect()" data-dismiss="modal">Close</button>
-                        </div>
-
                     </div>
                 </div>
             </div>
-            <div class= "container">
-                <table class="table table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Nombres</th> 
-                            <th>Apellidos</th>
-                            <th>Dirección</th>
-                            <th>Teléfono</th>
-                            <th>DPI</th>
-                            <th>Genero</th>
-                            <th>Fecha Nacimiento</th>
-                            <th>Fecha Labor</th>
-                            <th>Fecha Ingreso</th>
-                            <th>Puesto</th>
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark   titulos">
+                    <tr>
+                        <th>Nombres</th> 
+                        <th>Apellidos</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>DPI</th>
+                        <th>Genero</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Fecha Labor</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Puesto</th>
 
-                        </tr>
-                    </thead>
-                    <tbody id="tbl_empleados">
+                    </tr>
+                </thead>
+                <tbody class="formula_tabla" id="tbl_empleados">
 
-                        <% 
-                        Empleado empleado = new Empleado();
-                        DefaultTableModel tabla = new DefaultTableModel();
-                        tabla= empleado.leer3();
-                        for (int r=0; r<tabla.getRowCount(); r++){
-                        out.println("<tr data-id=" + tabla.getValueAt(r,0) + " data-id_pues=" + tabla.getValueAt(r,11) + " >");
-                        out.println("<td>" + tabla.getValueAt(r,1) + "</td>");
-                        out.println("<td>" + tabla.getValueAt(r,2) + "</td>");
-                        out.println("<td>" + tabla.getValueAt(r,3) + "</td>");             
-                        out.println("<td>" + tabla.getValueAt(r,4) + "</td>");
-                        out.println("<td>" + tabla.getValueAt(r,5) + "</td>");     
-                        out.println("<td>" + tabla.getValueAt(r,6) + "</td>");
-                        out.println("<td>" + tabla.getValueAt(r,7) + "</td>");
-                        out.println("<td>" + tabla.getValueAt(r,8) + "</td>");
-                        out.println("<td>" + tabla.getValueAt(r,9) + "</td>");
-                        out.println("<td>" + tabla.getValueAt(r,10) + "</td>");
-                      
-                        out.println("</tr>");
-                        }
-                        %>
-                    </tbody>
-                </table>
-            </div>
-            <script type="text/javascript">
-
-                function Limpiar() {
-
-                    $("#txt_id").val(0);
-                    $("#txt_nombres").val('');
-                    $("#txt_apellidos").val('');
-                    $("#txt_direccion").val('');
-                    $("#txt_telefono").val('');
-                    $("#txt_dpi").val('');
-                    $("#txt_fn").val('');
-                    $("#drop_puestos").val(0);
-                    $("#txt_fn").val('');
-                    $("#txt_fni").val('');
-
-                }
-
-                function unselect() {
-                    document.querySelectorAll('[name=gen]').forEach((x) => x.checked = false);
-                }
-                function setRadio(obj)
-                {
-                    obj.checked = false;
-                }
-
-                $('#tbl_empleados').on('click', 'tr td', function (evt) {
-                    var target, id, id_pu, nombres, apellidos, direccion, telefono, dpi, genero, f_nacido, f_labor, f_ingreso;
-                    var unos, gemm;
-
-                    target = $(event.target);
-                    id = target.parent().data('id');
-                    id_pu = target.parent().data('id_pues');
-                    nombres = target.parent("tr").find("td").eq(0).html();
-                    apellidos = target.parent("tr").find("td").eq(1).html();
-                    direccion = target.parent("tr").find("td").eq(2).html();
-                    telefono = target.parent("tr").find("td").eq(3).html();
-                    dpi = target.parent("tr").find("td").eq(4).html();
-                    genero = target.parent("tr").find("td").eq(5).html();
-                    f_nacido = target.parent("tr").find("td").eq(6).html();
-                    f_labor = target.parent("tr").find("td").eq(7).html();
-                    f_ingreso = target.parent("tr").find("td").eq(8).html();
-                    gemm = genero;
-
-
-                    $("#txt_id").val(id);
-                    $("#txt_nombres").val(nombres);
-                    $("#txt_apellidos").val(apellidos);
-                    $("#txt_direccion").val(direccion);
-                    $("#txt_telefono").val(telefono);
-                    $("#txt_dpi").val(dpi);
-                    $("#txt_fn").val(f_nacido);
-                    $("#txt_fni").val(f_labor);
-                    $("#drop_puestos").val(id_pu);
-
-                    if (gemm === "Masculino") {
-                        unos = "uno";
-
-                    } else {
-                        unos = "dos";
-
+                    <% 
+                    Empleado empleado = new Empleado();
+                    DefaultTableModel tabla = new DefaultTableModel();
+                    tabla= empleado.leer3();
+                    int cero=0;
+                    for (int r=0; r<tabla.getRowCount(); r++){
+                    cero++;
+                    out.println("<tr data-id=" + tabla.getValueAt(r,0) + " data-id_pues=" + tabla.getValueAt(r,11) + " >");
+                    out.println("<td>" + tabla.getValueAt(r,1) + "</td>");
+                    out.println("<td>" + tabla.getValueAt(r,2) + "</td>");
+                    out.println("<td>" + tabla.getValueAt(r,3) + "</td>");             
+                    out.println("<td>" + tabla.getValueAt(r,4) + "</td>");
+                    out.println("<td>" + tabla.getValueAt(r,5) + "</td>");     
+                    out.println("<td>" + tabla.getValueAt(r,6) + "</td>");
+                    out.println("<td>" + tabla.getValueAt(r,7) + "</td>");
+                    out.println("<td>" + tabla.getValueAt(r,8) + "</td>");
+                    out.println("<td>" + tabla.getValueAt(r,9) + "</td>");
+                    out.println("<td>" + tabla.getValueAt(r,10) + "</td>");
+                    out.println("</tr>");
                     }
-                    $("#modal_empleado").modal('show');
+                   out.println("<div class='contador_lbl'>"+"<h5 >"+"No. Empleados "+cero+"</h5>"+"</div>");
+                    %>
+                </tbody>
+            </table>
 
-                    $("#" + unos).val(genero).click();
-
-                });
-
-            </script>
-
+            <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+            <script type = "text/javascript " src = "js/formulario_empleado.js" > </script> 
         </div>
-
     </body>
-
 </html>

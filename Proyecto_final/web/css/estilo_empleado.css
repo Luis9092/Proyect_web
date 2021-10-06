@@ -239,13 +239,12 @@ main {
     transition: .1s ease all;
 }
 .contador_lbl{
-    
     background: rgb(31,254,33);
     background: linear-gradient(30deg, rgba(31,254,33,1) 0%, rgba(72,243,120,1) 35%, rgba(41,241,125,1) 100%);
     color:black;
     font-weight: bold;
-      position: absolute; 
-    width: 160px;
+    position: absolute; 
+    width: 195px;
     height: 40px;
     line-height: 50px;
     font-size: inherit;
@@ -256,7 +255,18 @@ main {
 }
 
 .titulos{
-   text-align: center;
-   font-size: 16px;
+   font-size: 15px;
 }
-
+.enlaze_puesto{
+    height: 50px;
+    width: 25%; 
+    background: rgb(38,171,171);
+    background: linear-gradient(0deg, rgba(38,171,171,1) 0%, rgba(23,244,209,1) 100%);
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 17px;
+    border: 2px solid #00bfff; 	
+    border-radius:4px;
+    cursor: pointer;
+    transition: .1s ease all;
+}

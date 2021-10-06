@@ -1,14 +1,13 @@
-
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
 
-    nombre: /^[a-zA-ZÀ-ÿ\s]{5,40}$/, // Letras y espacios, pueden llevar acentos.
-    password: /^.{4,12}$/, // 4 a 12 digitos.
+    nombre: /^[A-Z]{1}[a-zA-ZÀ-ÿ\s]{3,40}([ ][A-Z]{1}[a-zA-ZÀ-ÿ\s]{3,40})?$/, // Letras y espacios, pueden llevar acentos.
+   apellido:/^[A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}[ ][A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}$/,
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^[+]{1}[0-9]{1,4}[ ][0-9]{7,14}$/, // 7 a 14 numeros.
-    nit: /^[0-9]{1,6}[-][0-9]{1}$/
+    nit: /^[0-9]{6}[-][0-9]{1}$/
 };
 
 const campos = {
@@ -27,7 +26,7 @@ const validarFormulario = (e) => {
             validarCampo(expresiones.nombre, e.target, 'txt_nombre');
             break;
         case "txt_apellido":
-            validarCampo(expresiones.nombre, e.target, 'txt_apellido');
+            validarCampo(expresiones.apellido, e.target, 'txt_apellido');
             break;
         case "txt_nit":
             validarCampo(expresiones.nit, e.target, 'txt_nit');
@@ -167,15 +166,15 @@ function mensaje() {
 //}
 'use strict';
 const btn_agregar = document.querySelector('#btn_agregar');
+const btn_modificar = document.querySelector('#btn_modificar');
+
 let validar = () => {
     var rad1 = $('input[name=gen]:checked').val();
    
     let inputs_requerido = document.querySelectorAll('#formulario [required]');
     let error = false;
     for (let i = 0; i < inputs_requerido.length; i++) {
-        if (inputs_requerido[i].value === ''||(typeof(rad1) === "undefined")) {
-       
-           
+        if (inputs_requerido[i].value === ''||(typeof(rad1) === "undefined")) {         
             error = true;
         } else {
             inputs_requerido[i].classList.remove('input_error2');
@@ -185,14 +184,124 @@ let validar = () => {
     return error;
 };
 
+let validar2 = () => {
+    var rad1 = $('input[name=gen]:checked').val();
+   
+    let inputs_requerido2 = document.querySelectorAll('#formulario [required]');
+    let error2 = false;
+    for (let i = 0; i < inputs_requerido2.length; i++) {
+        if (inputs_requerido2[i].value === ''||(typeof(rad1) === "undefined")) {         
+            error2 = true;
+        } else {
+            inputs_requerido2[i].classList.remove('input_error2');
+
+        }
+    }
+    return error2;
+};
+
 let obtener_datos=()=>{
  let error=validar();   
  if(error){
-   swal("Error!!", "Llene los campos correctamente", "error");
- }else{
-     swal("Excelente!", "Registro Ingresado Correctamente!", "success");  
- }
- 
-};
+    
+        
+//        swal("Error!!", "Llene los campos correctamente", "error");
+     swal({
+    title: "Error!!",
+    text: "Llene los campos correctamente!!",
+   // type:"warning",
+     icon: "error",
+            button:"Aceptar",
+  
+    showConfirmButton: false
+  });    
+    
+    
+    }else{
+     swal({
+    title: "Excelente!!",
+    text: "Registro Agregado Correctamente!!",
+  
+     icon: "success",
+    timer: 10000,
+    
+    showConfirmButton: false
+  });    
+  }
+ };
 
+let obtener_datos2=()=>{
+ let error2=validar2();   
+ if(error2){
+    swal("Error!!", "Llene los campos correctamente", "error");
+ }else{
+       swal({
+    title: "Excelente!!",
+    text: "Registro Agregado Correctamente!!",
+    icon: "success",
+    timer: 90000,
+    showConfirmButton: false
+  });    
+ }
+ };
 btn_agregar.addEventListener('click',obtener_datos);
+btn_modificar.addEventListener('click',obtener_datos2);
+
+function eliminar33(){
+    
+    
+ swal({
+  title: "Eliminar Cliente",
+  text: "Desea Eliminar el cliente?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("Cliente Eliminado Correctamente!!", {
+             icon: "success"
+    });
+    $("#btn_eliminar").click();
+
+  } else {
+    swal("Cliente No Eliminado");
+  }
+});   
+} 
+
+
+
+$(document).ready(function(){
+$("tr #btn_eliminar").click(function(e){
+ e.preventExtensions();
+ var cod=$(this).parent().find('#txt_id').val();
+
+    swal({
+  title: "Eliminar Cliente",
+  text: "Desea Eliminar el cliente?",
+  icon: "warning",
+     buttons: true,
+  dangerMode: true
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("Cliente Eliminado Correctamente!!", {
+      icon: "success"
+    });
+  } else {
+    swal("Cliente No Eliminado");
+  }
+});
+}); 
+});
+
+function eliminar(){
+    
+    
+}
+
+
+
+
+

@@ -28,16 +28,7 @@ main {
 }
 
 .formula_modal{
-    /*   background: rgb(210,214,214);
-       background: linear-gradient(90deg, rgba(210,214,214,1) 0%, rgba(227,237,237,0.9086937399471507) 50%, rgba(156,155,153,1) 100%);
-   
-   background: rgb(83,241,160);
-   background: linear-gradient(30deg, rgba(83,241,160,1) 0%, rgba(63,244,81,1) 35%, rgba(145,247,231,1) 100%);
-   
-   background: rgb(6,151,195);
-   background: linear-gradient(30deg, rgba(6,151,195,1) 0%, rgba(70,207,212,1) 35%, rgba(8,237,246,1) 100%);
-    */
-    background: rgb(209,212,213);
+     background: rgb(209,212,213);
     background: linear-gradient(30deg, rgba(209,212,213,1) 0%, rgba(163,180,181,1) 35%, rgba(8,237,246,1) 100%);
 
 }
@@ -204,9 +195,10 @@ main {
 
 
 }
-.formula_tabla{
+.formula_puesto{
     background-color: khaki;
-    font-size: 14px;
+    font-size: 19px;
+    text-align: center;
 }
 
 .radio_ver{
@@ -239,14 +231,13 @@ main {
     transition: .1s ease all;
 }
 .contador_lbl{
-    
     background: rgb(31,254,33);
     background: linear-gradient(30deg, rgba(31,254,33,1) 0%, rgba(72,243,120,1) 35%, rgba(41,241,125,1) 100%);
     color:black;
     font-weight: bold;
-      position: absolute; 
-    width: 160px;
-    height: 40px;
+    position: absolute; 
+    width: 230px;
+    height: 30px;
     line-height: 50px;
     font-size: inherit;
     left: 91%; 
@@ -257,6 +248,19 @@ main {
 
 .titulos{
    text-align: center;
-   font-size: 16px;
+   font-size: 20px;
+}
+.enlaze_empleado{
+    height: 50px;
+    width: 25%; 
+    background: rgb(38,171,171);
+    background: linear-gradient(0deg, rgba(38,171,171,1) 0%, rgba(23,244,209,1) 100%);
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 17px;
+    border: 2px solid #00bfff; 	
+    border-radius:4px;
+    cursor: pointer;
+    transition: .1s ease all;
 }
 

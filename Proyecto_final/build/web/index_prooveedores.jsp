@@ -18,64 +18,97 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
 
+        <link rel="stylesheet" href="css/estilo_proveedor.css">
     </head>
     <body>
-        <button type="button" class="btn btn-primary text-white" data-toggle="modal" data-target="#modal_proveedor" onclick="Limpiar()">
+         <form  action="index.jsp">
+            <input class="btn_form" type="submit" value="Menu" />
+       
+        <button type="button" class="btn_form" data-toggle="modal" data-target="#modal_proveedor" onclick="Limpiar()">
             Formulario
         </button>
+         </form>
         <div class="container p-3 my-3 bg-light  text-black">
-            <h5><center>Formulario Proveedores:0</center> </h5>
-            <br>
-            <div class="modal fade" id="modal_proveedor" role="dialog">
-                <div class="modal-dialog">
+            <div class="formulario_titulo">
+                <h5>Formulario Proveedores :3</h5>
+            </div>
+            <br> 
+
+            <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_proveedor" role="dialog">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
+                        <div class="modal-body  formula_modal">
+                            <form action="src_proveedor" method="post" class="formulario" class="form-group" id="formulario">
 
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <form action="src_proveedor" method="post" class="form-group">
-                                <label for="lbl_id"><b>ID:</b> </label>
-                                <input class="form-control" type="text" name="txt_id" id="txt_id" value="0"readonly>
+                                <div class="formulario__grupo" id="grupo__txt_id">
+                                    <label for="nombre" class="formulario__label">ID:</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_id" id="txt_id" value="0" readonly>
+                                    </div>
+                                </div>
+                                <!-- Proveedor -->
+                                <div class="formulario__grupo" id="grupo__txt_proo">
+                                    <label for="lbl_proo" class="formulario__label">Proveedor: </label>
+                                    <div class="formulario__grupo-input">
 
+                                        <input type="text" class="formulario__input  " name="txt_proo" id="txt_proo"  pattern="[A-Z]{1}[a-zA-ZÀ-ÿ\s]{3,40}"  placeholder="Organización" required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">No estan permitidos los numeros</p>
+                                </div>
 
-                                <label for="lbl_proo"><b>Proveedor:</b> </label>
-                                <input class="form-control" type="text" name="txt_proo" id="txt_proo" placeholder="campo#" required>
+                                <!-- Grupo: NIT-->
+                                <div class="formulario__grupo" id="grupo__txt_nit">
+                                    <label for="lbl_nit" class="formulario__label">NIT: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_nit" id="txt_nit" pattern="[0-9]{6}[-][0-9]{1}" placeholder="######-#" required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Nit Válido: ######-#</p>
+                                </div>
 
-                                <label for="lbl_nit"><b>NIT:</b> </label>
-                                <input class="form-control" type="text" name="txt_nit" id="txt_nit" placeholder="Apellidos" required>
+                                <!-- Direccion -->
+                                <div class="formulario__grupo" id="grupo__txt_direccion">
+                                    <label for="lbl_direccion" class="formulario__label">Dirección: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_direccion" id="txt_direccion" pattern="[A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}[ ][A-Z]{1}[a-zA-ZÀ-ÿ\s]{4,40}" placeholder="Direccion"  required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Lugar, Pais </p>
+                                </div>
 
-                                <label for="lbl_direccion"><b>Dirección:</b> </label>
-                                <input class="form-control" type="text" name="txt_direccion" id="txt_direccion" placeholder="###########" required>
-
-                                <label for="lbl_Telefono"><b>Teléfono:</b> </label>
-                                <input class="form-control" type="number" name="txt_telefono" id="txt_telefono" placeholder="000000000" required>
+                                <!-- Telefono -->
+                                <div class="formulario__grupo" id="grupo__txt_telefono">
+                                    <label for="lbl_telefono" class="formulario__label">Telefono: </label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="txt_telefono" id="txt_telefono" pattern="[+]{1}[0-9]{1,4}[ ][0-9]{7,14}" placeholder="+### ########"  required>
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Extension del Pais, número de teléfono</p>
+                                </div>
                                 <br>
-                                <br>
-                                <center>    
-                                    <button  name="btn_agregar" id="btn_agregar" value="agregar" class="btn btn-primary">Agregar</button>
-                                    <button  name="btn_modificar" id="btn_modificar" value="modificar" class="btn btn-success ">Modificar</button>
-                                    <button  name="btn_eliminar" id="btn_eliminar" value="eliminar" class="btn btn btn-danger " onclick ="javascript:if (!confirm('¿Desea Eliminar'))
+                                <div class=" formulario__grupo-btn-enviar">
+                                    <button  name="btn_agregar" id="btn_agregar" value="agregar"    class="formulario__btn " >Agregar</button>
+                                    <button  name="btn_modificar" id="btn_modificar" value="modificar" class="formulario__btn1" >Modificar</button>
+                                    <button  name="btn_eliminar" id="btn_eliminar" value="eliminar" class="formulario__btn2"  onclick ="javascript:if (!confirm('¿Desea Eliminar'))
                                                 return false"  >Eliminar</button>
-                                </center>
+                                </div>
+                                <br> 
                             </form>
 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning mod_salir" onclick="recargar()"  onclick="unselect()"  data-dismiss="modal">Salir</button>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-warning text-white"  data-dismiss="modal">Close</button>
-                        </div>
-
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
             <div class= "container">
-                <table class="table table-hover">
-                    <thead class="thead-dark">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-dark   titulos">      
                         <tr>
                             <th>Proveedor</th> 
                             <th>Nit</th>
@@ -83,12 +116,14 @@
                             <th>Teléfono</th>
                         </tr>
                     </thead>
-                    <tbody id="tbl_proveedores">
+                    <tbody class="formula_tabla" id="tbl_proveedores">
                         <% 
                                 Proveedor prov = new Proveedor();
                                 DefaultTableModel tabla = new DefaultTableModel();
                                 tabla= prov.leer3();
+                                int cero=0;
                                 for (int r=0; r<tabla.getRowCount(); r++){
+                                cero++;
                                 out.println("<tr data-id=" + tabla.getValueAt(r,0) + " >");
                                 out.println("<td>" + tabla.getValueAt(r,1) + "</td>");
                                 out.println("<td>" + tabla.getValueAt(r,2) + "</td>");
@@ -96,40 +131,13 @@
                                 out.println("<td>" + tabla.getValueAt(r,4) + "</td>");
                                 out.println("</tr>");
                                 }
+                                  out.println("<div class='contador_lbl'>"+"<h5 >"+"No. Proveedores "+cero+"</h5>"+"</div>");
                         %>
                     </tbody>
                 </table>
             </div>
-            <script type="text/javascript">
-
-                function Limpiar() {
-                    $("#txt_id").val(0);
-                    $("#txt_proo").val('');
-                    $("#txt_nit").val('');
-                    $("#txt_direccion").val('');
-                    $("#txt_telefono").val('');
-
-                }
-
-                $('#tbl_proveedores').on('click', 'tr td', function (evt) {
-                    var target, id, proveedor, direccion, telefono, nit;
-                    target = $(event.target);
-                    id = target.parent().data('id');
-                    proveedor = target.parent("tr").find("td").eq(0).html();
-                    nit = target.parent("tr").find("td").eq(1).html();
-                    direccion = target.parent("tr").find("td").eq(2).html();
-                    telefono = target.parent("tr").find("td").eq(3).html();
-
-
-                    $("#txt_id").val(id);
-                    $("#txt_proo").val(proveedor);
-                    $("#txt_nit").val(nit);
-                    $("#txt_direccion").val(direccion);
-                    $("#txt_telefono").val(telefono);
-                    $("#modal_proveedor").modal('show');
-                });
-
-            </script>
+            <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+            <script type = "text/javascript " src = "js/formulario_proveedor.js" > </script> 
         </div>
     </body>
 </html>

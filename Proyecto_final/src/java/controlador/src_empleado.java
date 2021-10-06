@@ -6,6 +6,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Empleado;
 /**
  
@@ -17,7 +19,7 @@ public class src_empleado extends HttpServlet {
     private String uno ="2021-04-15 19:30:31";
    private int genero;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, InterruptedException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
@@ -41,18 +43,19 @@ public class src_empleado extends HttpServlet {
             if("agregar".equals(request.getParameter("btn_agregar"))){
                 
             if (empleado.agregar() > 0) {
-                out.println("<h1>Registro Ingresado Correctamente :vv</h1>");
-                out.println("<a href ='index_empleado.jsp' > Regresar </a>");
+           Thread.sleep(2000);
+           response.sendRedirect("index_empleado.jsp");
+            
             } else {
-                out.println("<h1>Error carnal</h1>");
-                out.println("<a href ='index_empleado.jsp '> Regresar </a>");
-            }
+           Thread.sleep(2000);
+           response.sendRedirect("index_empleado.jsp");
+              }
             }
                 if("modificar".equals(request.getParameter("btn_modificar"))){
                 
             if (empleado.modificar() > 0) {
-                out.println("<h1>Registro Modificado Correctamente :vv</h1>");
-                out.println("<a href ='index_empleado.jsp '> Regresar </a>");
+           Thread.sleep(2000);
+           response.sendRedirect("index_empleado.jsp");
             } else {
                 out.println("<h1>Error carnal</h1>");
                 out.println("<a href ='index_empleado.jsp '> Regresar </a>");
@@ -61,8 +64,8 @@ public class src_empleado extends HttpServlet {
         if("eliminar".equals(request.getParameter("btn_eliminar"))){
                 
             if (empleado.eliminar() > 0) {
-                out.println("<h1>Registro eliminado Correctamente :vv</h1>");
-                out.println("<a href ='index_empleado.jsp '> Regresar </a>");
+           Thread.sleep(2000);
+           response.sendRedirect("index_empleado.jsp");
             } else {
                 out.println("<h1>Error carnal</h1>");
                 out.println("<a href ='index_empleado.jsp '> Regresar </a>");
@@ -86,7 +89,11 @@ public class src_empleado extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(src_empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -100,7 +107,11 @@ public class src_empleado extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(src_empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
