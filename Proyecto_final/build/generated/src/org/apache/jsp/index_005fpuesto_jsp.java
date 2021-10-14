@@ -60,14 +60,12 @@ public final class index_005fpuesto_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n");
       out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");
       out.write("\n");
-      out.write("      \n");
-      out.write("\n");
-      out.write("\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/estilo_puesto.css\">\n");
-      out.write("          <!-- CSS -->\n");
+      out.write("        <!-- CSS -->\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css\"/>\n");
       out.write("        <!-- Default theme -->\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css\"/>\n");
+      out.write("     \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <form  action=\"index.jsp\">\n");
@@ -78,7 +76,7 @@ public final class index_005fpuesto_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("            </button>\n");
       out.write("\n");
       out.write("        </form>\n");
-      out.write("        <button type=\"button\" id=\"confirmar4\" onclick=\"tres();\" >Mostrar confirmacion</button>\n");
+      out.write("        <button type=\"button\" id=\"confirmar4\" onclick=\"confirmar2()\" >Mostrar confirmacion</button>\n");
       out.write("        <button type=\"button\" id=\"confirm5\" onclick=\"return doss();\" >Prueba</button>\n");
       out.write("        <div class=\"container p-3 my-3 bg-light  text-black\">\n");
       out.write("            <div class=\"modal fade\" data-backdrop=\"static\" data-keyboard=\"false\" tabindex=\"-1\" id=\"modal_puesto\" role=\"dialog\">\n");
@@ -111,7 +109,8 @@ public final class index_005fpuesto_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                <center>    \n");
       out.write("                                    <button  name=\"btn_agregar\" id=\"btn_agregar\" value=\"agregar\"    class=\"formulario__btn \" >Agregar</button>\n");
       out.write("                                    <button  name=\"btn_modificar\" id=\"btn_modificar\" value=\"modificar\" class=\"formulario__btn1\" >Modificar</button>\n");
-      out.write("                                    <button  name=\"btn_eliminar\" id=\"btn_eliminar\" value=\"eliminar\" class=\"formulario__btn2\" > Eliminar </button>\n");
+      out.write("                                    <button  name=\"btn_2\" id=\"btn_2\" onclick=\"return confirmar2();\" value=\"eliminar\"class=\"formulario__btn2\" > Eliminar </button>\n");
+      out.write("                               <button name=\"btn_eliminar\" id=\"btn_eliminar\"  value=\"eliminar\"class=\"btn_falso\" > Eliminar </button>\n");
       out.write("                                </center>\n");
       out.write("                            </form>\n");
       out.write("\n");
@@ -146,7 +145,7 @@ public final class index_005fpuesto_jsp extends org.apache.jasper.runtime.HttpJs
                         int cero=0;
                         for (int r=0; r<tabla.getRowCount(); r++){
                             cero++;
-                            out.println("<tr data-id=" + tabla.getValueAt(r,0)+ " >");
+                         out.println("<tr data-id=" + tabla.getValueAt(r,0)+ " >");
                         out.println("<td>" + tabla.getValueAt(r,1) + "</td>");
                         out.println("</tr>");
                         }
@@ -158,7 +157,6 @@ public final class index_005fpuesto_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("            </div>\n");
       out.write("            <script src=\"https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js\"></script>\n");
       out.write("            <script src=\"https://kit.fontawesome.com/2c36e9b7b1.js\" crossorigin=\"anonymous\"></script>\n");
-      out.write("\n");
       out.write("            <script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>\n");
       out.write("\n");
       out.write("            <script type = \"text/javascript \" src = \"js/formulario_puesto.js\" > </script> \n");

@@ -263,4 +263,6 @@ main {
     cursor: pointer;
     transition: .1s ease all;
 }
-
+.btn_falso{
+   visibility: hidden; 
+}

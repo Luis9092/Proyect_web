@@ -18,14 +18,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-      
-
-
         <link rel="stylesheet" href="css/estilo_puesto.css">
-          <!-- CSS -->
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
         <!-- Default theme -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+     
     </head>
     <body>
         <form  action="index.jsp">
@@ -36,7 +34,7 @@
             </button>
 
         </form>
-        <button type="button" id="confirmar4" onclick="tres();" >Mostrar confirmacion</button>
+        <button type="button" id="confirmar4" onclick="confirmar2()" >Mostrar confirmacion</button>
         <button type="button" id="confirm5" onclick="return doss();" >Prueba</button>
         <div class="container p-3 my-3 bg-light  text-black">
             <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" id="modal_puesto" role="dialog">
@@ -69,8 +67,9 @@
                                 <center>    
                                     <button  name="btn_agregar" id="btn_agregar" value="agregar"    class="formulario__btn " >Agregar</button>
                                     <button  name="btn_modificar" id="btn_modificar" value="modificar" class="formulario__btn1" >Modificar</button>
-                                    <button  name="btn_eliminar" id="btn_eliminar" value="eliminar" class="formulario__btn2" > Eliminar </button>
+                                    <button  name="btn_2" id="btn_2" onclick="return confirmar2();" value="eliminar"class="formulario__btn2" > Eliminar </button>
                                 </center>
+                                 <button name="btn_eliminar" id="btn_eliminar"  value="eliminar"class="btn_falso" > Eliminar </button>
                             </form>
 
                             <div class="modal-footer">
@@ -103,7 +102,7 @@
                         int cero=0;
                         for (int r=0; r<tabla.getRowCount(); r++){
                             cero++;
-                            out.println("<tr data-id=" + tabla.getValueAt(r,0)+ " >");
+                         out.println("<tr data-id=" + tabla.getValueAt(r,0)+ " >");
                         out.println("<td>" + tabla.getValueAt(r,1) + "</td>");
                         out.println("</tr>");
                         }
@@ -114,7 +113,6 @@
             </div>
             <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
             <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
             <script type = "text/javascript " src = "js/formulario_puesto.js" > </script> 
