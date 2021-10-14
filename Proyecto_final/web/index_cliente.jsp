@@ -1,7 +1,6 @@
 <%@page import="modelo.Cliente" %>
 <%@page import="java.util.HashMap" %>
 <%@page import="javax.swing.table.DefaultTableModel" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -17,16 +16,15 @@
         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="css/estilo_cliente.css">
-
     </head>
     <body>
-         <form  action="index.jsp">
+        <form  action="index.jsp">
             <input class="btn_form" type="submit" value="Menu" />
-       
-        <button type="button" class="  btn_form"  data-toggle="modal" data-target="#modal_cliente" onclick="Limpiar2()">
-            Formulario
-        </button>
-         </form>
+
+            <button type="button" class="  btn_form"  data-toggle="modal" data-target="#modal_cliente" onclick="Limpiar2()">
+                Formulario
+            </button>
+        </form>
         <div class="container-fluid  p-3 my-3 bg-light  text-black">
             <div class="formulario_titulo">
                 <h5>Formulario Clientes :0</h5>
@@ -75,6 +73,7 @@
                                 </div>
 
                                 <!-- Genero -->
+
                                 <div class="formulario__grupo" id="grupo_txt_genero">
                                     <label for="genero" class="formulario__label">Genero:</label>
                                     <div class="formulario__grupo-input">
@@ -117,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class= "container ">
                 <table class="table table-hover table-bordered">
                     <thead class="thead-dark   titulos">

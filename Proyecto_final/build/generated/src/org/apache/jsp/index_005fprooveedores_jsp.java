@@ -66,9 +66,13 @@ public final class index_005fprooveedores_jsp extends org.apache.jasper.runtime.
       out.write("        <link rel=\"stylesheet\" href=\"css/estilo_proveedor.css\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <button type=\"button\" class=\"btn btn-primary btn_form\" data-toggle=\"modal\" data-target=\"#modal_proveedor\" onclick=\"Limpiar()\">\n");
+      out.write("         <form  action=\"index.jsp\">\n");
+      out.write("            <input class=\"btn_form\" type=\"submit\" value=\"Menu\" />\n");
+      out.write("       \n");
+      out.write("        <button type=\"button\" class=\"btn_form\" data-toggle=\"modal\" data-target=\"#modal_proveedor\" onclick=\"Limpiar()\">\n");
       out.write("            Formulario\n");
       out.write("        </button>\n");
+      out.write("         </form>\n");
       out.write("        <div class=\"container p-3 my-3 bg-light  text-black\">\n");
       out.write("            <div class=\"formulario_titulo\">\n");
       out.write("                <h5>Formulario Proveedores :3</h5>\n");

@@ -66,10 +66,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"container\" >\n");
       out.write("            <br><br><br><br><br>\n");
       out.write("            <div class  =\"list-group\" >\n");
-      out.write("                <a href=\"index_empleado.jsp\"  class=\"list-group-item bg-success text-center text-white list-group-item-action\">Fomulario Empleado</a>\n");
-      out.write("                <a href=\"index_cliente.jsp\"  class=\"list-group-item btn btn-danger bg-info btn text-center text-white btn btn-success list-group-item-action\">Formulario Cliente</a>\n");
-      out.write("                <a href=\"index_prooveedores.jsp\"  class=\"list-group-item text-center bg-danger text-white list-group-item-action\">formulario Proveedores</a>\n");
-      out.write("                <a href=\"index_puesto.jsp\"  class=\"list-group-item text-center bg-warning text-white list-group-item-action\">formulario Puestos</a>\n");
+      out.write("                <a href=\"index_empleado.jsp\"  class=\"list-group-item bg-success text-center text-white list-group-item-action\">Fomulario Empleados</a>\n");
+      out.write("                <a href=\"index_cliente.jsp\"  class=\"list-group-item btn btn-danger bg-info btn text-center text-white btn btn-success list-group-item-action\">Formulario Clientes</a>\n");
+      out.write("                <a href=\"index_prooveedores.jsp\"  class=\"list-group-item text-center bg-danger text-white list-group-item-action\">Formulario Proveedores</a>\n");
+      out.write("                <a href=\"index_puesto.jsp\"  class=\"list-group-item text-center bg-warning text-white list-group-item-action\">Formulario Puestos</a>\n");
       out.write("               <a href=\"https://matias.ma/nsfw/\"  class=\"list-group-item text-center bg-primary text-white list-group-item-action\">Relajata Crack \\°o°/ </a>\n");
       out.write("\n");
       out.write("            </div>\n");

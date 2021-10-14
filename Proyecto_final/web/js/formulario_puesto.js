@@ -1,35 +1,30 @@
+/* global Swal, alertify */
+
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
-
-
 function Limpiar() {
     $("#txt_id").val(0);
     $("#txt_puesto").val('');
-
-
 }
+
+
 $('#tbl_puestos').on('click', 'tr td', function (evt) {
     var target, id, puesto;
     target = $(event.target);
     id = target.parent().data('id');
-
     puesto = target.parent("tr").find("td").eq(0).html();
     $("#txt_id").val(id);
     $("#txt_puesto").val(puesto);
     $("#modal_puesto").modal('show');
 });
-
-
 const expresiones = {
 
     nombre: /^[A-Z]{1}[a-zA-ZÀ-ÿ\s]{3,40}$/ // Letras y espacios, pueden llevar acentos.
 
 };
-
 const campos = {
     nombre: false
 };
-
 const validarFormulario = (e) => {
     switch (e.target.name) {
         case "txt_puesto":
@@ -37,8 +32,6 @@ const validarFormulario = (e) => {
             break;
     }
 };
-
-
 const validarCampo = (expresion, input, campo) => {
     if (expresion.test(input.value)) {
         document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
@@ -56,21 +49,17 @@ const validarCampo = (expresion, input, campo) => {
         campos[campo] = false;
     }
 };
-
-
 inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur', validarFormulario);
 });
-
 function recargar() {
-   document.location.reload();
+    document.location.reload();
 }
 
 'use strict';
 const btn_agregar = document.querySelector('#btn_agregar');
 const btn_modificar = document.querySelector('#btn_modificar');
-
 let validar = () => {
     let inputs_requerido = document.querySelectorAll('#formulario [required]');
     let error = false;
@@ -79,12 +68,10 @@ let validar = () => {
             error = true;
         } else {
             inputs_requerido[i].classList.remove('input_error2');
-
         }
     }
     return error;
 };
-
 let validar2 = () => {
     let inputs_requerido2 = document.querySelectorAll('#formulario [required]');
     let error2 = false;
@@ -93,49 +80,122 @@ let validar2 = () => {
             error2 = true;
         } else {
             inputs_requerido2[i].classList.remove('input_error2');
-
         }
     }
     return error2;
 };
-
 let obtener_datos = () => {
     let error = validar();
     if (error) {
-        swal({
-            title: "Error!!",
-            text: "Llene los campos correctamente!!",
-            icon: "error",
-            button: "Aceptar",
+        error44();
+    } else {
 
-            showConfirmButton: false
-        });
-   } else {
-        swal({
-            title: "Excelente!!",
-            text: "Registro Agregado Correctamente!!",
-
-            icon: "success",
-            timer: 10000,
-
-            showConfirmButton: false
-        });
+        correcto();
     }
 };
-
 let obtener_datos2 = () => {
     let error2 = validar2();
     if (error2) {
-        swal("Error!!", "Llene los campos correctamente", "error");
+        error44();
     } else {
-        swal({
-            title: "Excelente!!",
-            text: "Registro Agregado Correctamente!!",
-            icon: "success",
-            timer: 90000,
-            showConfirmButton: false
-        });
+        correcto();
     }
 };
+function error44() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error!!',
+       html: '<h5 style=color:red><br><b>Debe Llenar los campos correctamente</b></h5>',
+       // confirmButtonColor: '#a52a2a'
+       showConfirmButton: false 
+    });
+}
+
+function correcto() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Excelente!!',
+        html: '<h5 style=color:lime><br><b>Datos Ingresados Correctamente</b></h5>',
+      //   background: "#1e2122",
+        showConfirmButton: false 
+      //  confirmButtonColor: '#00ff00'
+    });
+}
 btn_agregar.addEventListener('click', obtener_datos);
 btn_modificar.addEventListener('click', obtener_datos2);
+function doss() {
+    //   var mensaje;
+    var opcion = confirm("Desea Eliminar");
+    if (opcion === true) {
+        //     mensaje = "Eliminado";
+        //     alert(mensaje);
+        return true;
+    } else {
+        //     mensaje = "No Eliminado";
+        //     alert(mensaje);
+
+        return false;
+    }
+}
+
+//$('#confirm').click(function () {
+function confirmar2() {
+    var r = false;
+    Swal.fire({
+        title: 'Eliminar',
+        text: "Desea Eliminar el registro?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'si, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value === true) {
+            Swal.fire(
+                    'Eliminado',
+                    'Datos Eliminados Correctamente',
+                    'success'
+
+                    );
+
+            r = true;
+            alert(r);
+            return true;
+        } else {
+            return r;
+            alert(r);
+        }
+    }
+    );
+    return false;
+    // return r;  alert(r);
+}
+//});
+function tres() {
+alertify.confirm("Desea Eliminar?", function(e){
+ if(e){
+return true;
+alertify.alert("Eliminado");
+
+ }else{
+alertify.alert("Cancelado");    
+return false;
+ }
+  
+});
+}
+
+$("#btn_eliminar").on('submit', 'form', function(e){
+
+    alertify.confirm('Confirm Title', 'Confirm Message',
+    function(){
+    //submit
+    document.formulario.submit();
+    alertify.success('Ok');
+    },
+    function(){ 
+    alertify.error('Cancel');
+
+    });
+});

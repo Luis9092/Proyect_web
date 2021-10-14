@@ -33,16 +33,18 @@ public class src_puesto extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             puesto = new Puesto(Integer.valueOf(request.getParameter("txt_id")), request.getParameter("txt_puesto"));
+          
             if ("agregar".equals(request.getParameter("btn_agregar"))) {
 
                 if (puesto.agregar() > 0) {
-                   Thread.sleep(2000);
+                   Thread.sleep(1000);
                     response.sendRedirect("index_puesto.jsp");
                  } else {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     response.sendRedirect("index_puesto.jsp");
                 }
             }
+            
             if ("modificar".equals(request.getParameter("btn_modificar"))) {
 
                 if (puesto.modificar() > 0) {
@@ -57,10 +59,15 @@ public class src_puesto extends HttpServlet {
 
                 if (puesto.eliminar() > 0) {
                 Thread.sleep(2000);
+                  out.println("<h1>Exito</h1>");
+          
                     response.sendRedirect("index_puesto.jsp");
+                    
                     } else {
                 Thread.sleep(2000);
                     response.sendRedirect("index_puesto.jsp");
+                      out.println("<h1>Error</h1>");
+          
                     }
             }
 

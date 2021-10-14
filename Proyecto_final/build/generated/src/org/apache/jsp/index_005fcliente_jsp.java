@@ -49,7 +49,6 @@ public final class index_005fcliente_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -63,16 +62,15 @@ public final class index_005fcliente_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <link rel=\"stylesheet\" href=\"https://necolas.github.io/normalize.css/8.0.1/normalize.css\">\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap\" rel=\"stylesheet\"> \n");
       out.write("        <link rel=\"stylesheet\" href=\"css/estilo_cliente.css\">\n");
-      out.write("\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("         <form  action=\"index.jsp\">\n");
+      out.write("        <form  action=\"index.jsp\">\n");
       out.write("            <input class=\"btn_form\" type=\"submit\" value=\"Menu\" />\n");
-      out.write("       \n");
-      out.write("        <button type=\"button\" class=\"  btn_form\"  data-toggle=\"modal\" data-target=\"#modal_cliente\" onclick=\"Limpiar2()\">\n");
-      out.write("            Formulario\n");
-      out.write("        </button>\n");
-      out.write("         </form>\n");
+      out.write("\n");
+      out.write("            <button type=\"button\" class=\"  btn_form\"  data-toggle=\"modal\" data-target=\"#modal_cliente\" onclick=\"Limpiar2()\">\n");
+      out.write("                Formulario\n");
+      out.write("            </button>\n");
+      out.write("        </form>\n");
       out.write("        <div class=\"container-fluid  p-3 my-3 bg-light  text-black\">\n");
       out.write("            <div class=\"formulario_titulo\">\n");
       out.write("                <h5>Formulario Clientes :0</h5>\n");
@@ -121,6 +119,7 @@ public final class index_005fcliente_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                </div>\n");
       out.write("\n");
       out.write("                                <!-- Genero -->\n");
+      out.write("\n");
       out.write("                                <div class=\"formulario__grupo\" id=\"grupo_txt_genero\">\n");
       out.write("                                    <label for=\"genero\" class=\"formulario__label\">Genero:</label>\n");
       out.write("                                    <div class=\"formulario__grupo-input\">\n");
@@ -163,7 +162,7 @@ public final class index_005fcliente_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
-      out.write("            \n");
+      out.write("\n");
       out.write("            <div class= \"container \">\n");
       out.write("                <table class=\"table table-hover table-bordered\">\n");
       out.write("                    <thead class=\"thead-dark   titulos\">\n");
