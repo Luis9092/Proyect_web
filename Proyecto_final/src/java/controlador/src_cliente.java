@@ -2,10 +2,10 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Cliente;
@@ -61,11 +61,11 @@ public class src_cliente extends HttpServlet {
             if ("eliminar".equals(request.getParameter("btn_eliminar"))) {
 
                 if (cliente.eliminar() > 0) {
-                out.println("<h1>Registro eliminado Correctamente :vv</h1>");
-                out.println("<a href ='index_cliente.jsp '> Regresar </a>");
+               Thread.sleep(2000);
+                    response.sendRedirect("index_cliente.jsp");
                 } else {
-                out.println("<h1>Registro  No eliminado Correctamente :vv</h1>");
-                out.println("<a href ='index_cliente.jsp '> Regresar </a>");
+                 Thread.sleep(2000);
+                    response.sendRedirect("index_cliente.jsp");
         
                 }
             }

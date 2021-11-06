@@ -52,7 +52,6 @@ public final class index_005fempleado_jsp extends org.apache.jasper.runtime.Http
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -62,30 +61,70 @@ public final class index_005fempleado_jsp extends org.apache.jasper.runtime.Http
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n");
       out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");
-      out.write("        <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://necolas.github.io/normalize.css/8.0.1/normalize.css\">\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap\" rel=\"stylesheet\"> \n");
-      out.write("\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/estilo_empleado.css\">\n");
+      out.write("        <link href=\"css/estilo_menu.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("          <form  action=\"index.jsp\">\n");
-      out.write("            <input class=\"btn_form\" type=\"submit\" value=\"Menu\" />\n");
-      out.write("       \n");
+      out.write("        <div id=\"header\">\n");
+      out.write("            <ul class=\"nav\">\n");
+      out.write("                <img src=\"imagenes/onitech.png\" alt=\"\"/>\n");
+      out.write("                <li><a href=\"index_inicio_principal.jsp\">Inicio</a></li>\n");
+      out.write("                <li><a href=\"index_producto.jsp\">Productos</a>\n");
+      out.write("                    <ul>\n");
+      out.write("                        <li><a href=\"index_marcas.jsp\">Marcas</a></li>\n");
+      out.write("                    </ul>\n");
+      out.write("                </li>\n");
+      out.write("                <li><a href=\"index_ventas.jsp\">Ventas</a>\n");
+      out.write("                    <ul>\n");
+      out.write("                        <li><a href=\"index_cliente.jsp\">Clientes</a></li>\n");
+      out.write("                        <li><a href=\"index_empleado.jsp\">Empleados</a>\n");
+      out.write("                            <ul>\n");
+      out.write("                                <li><a href=\"index_puesto.jsp\">Puestos</a></li>\n");
+      out.write("                            </ul>\n");
+      out.write("                        </li>\n");
+      out.write("                    </ul>\n");
+      out.write("                </li>\n");
+      out.write("                <li><a href=\"index_compras.jsp\">Compras</a>\n");
+      out.write("                    <ul>\n");
+      out.write("                        <li><a href=\"index_prooveedores.jsp\">Proveedores</a></li>\n");
+      out.write("                    </ul>\n");
+      out.write("                </li>\n");
+      out.write("                <li><a href=\"Menu_reportes.jsp\">Reportes</a></li>\n");
+      out.write("                <li>\n");
+      out.write("                    ");
+
+                        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                        if (session.getAttribute("txtUsuario") == null && session.getAttribute("nombre") == null) {
+                            response.sendRedirect("index.html");
+                        }  
+      out.write("\n");
+      out.write("                    <a > \n");
+      out.write("                        <form action=\"sr_cerrar_sesion\" >\n");
+      out.write("                            <input class=\"cerrar_sesion\" type=\"submit\"  value=\"Cerrar Sesion\">\n");
+      out.write("                        </form>\n");
+      out.write("                    </a>\n");
+      out.write("                </li>\n");
+      out.write("            </ul>\n");
+      out.write("        </div>\n");
+      out.write("        <br>\n");
+      out.write("\n");
       out.write("        <button type=\"button\" class=\"btn_form\" data-toggle=\"modal\" data-target=\"#modal_empleado\" onclick=\"Limpiar()\">\n");
       out.write("            Formulario\n");
       out.write("        </button>\n");
-      out.write("          </form>\n");
-      out.write("        <div class=\"container-fluid p-3 my-3 bg-light  text-black\">\n");
+      out.write("\n");
+      out.write("        <div class=\"container-fluid p-3 my-3  text-black\">\n");
       out.write("\n");
       out.write("            <div class=\"formulario_titulo\">\n");
-      out.write("                <h5>Formulario Empleados :3</h5>\n");
+      out.write("                <h5>Formulario Empleados </h5>\n");
       out.write("            </div>\n");
       out.write("            <br>\n");
       out.write("            <div class=\"modal fade\"  data-backdrop=\"static\" data-keyboard=\"false\" tabindex=\"-1\" id=\"modal_empleado\" role=\"dialog\">\n");
       out.write("                <div class=\"modal-dialog modal-xl\">\n");
-      out.write("                    <div class=\"modal-content\">\n");
-      out.write("                        <div class=\"modal-body  formula_modal\">\n");
+      out.write("                    <div class=\"modal-content formula_modal\">\n");
+      out.write("                        <div class=\"modal-body  \">\n");
+      out.write("\n");
       out.write("                            <form  action=\"index_puesto.jsp\">\n");
       out.write("                                <input class=\"enlaze_puesto\" type=\"submit\" value=\"Puestos\" />\n");
       out.write("                            </form>\n");
@@ -178,11 +217,10 @@ public final class index_005fempleado_jsp extends org.apache.jasper.runtime.Http
       out.write("                                        <select name=\"drop_puestos\" class=\"formulario__input\" id=\"drop_puestos\" >\n");
       out.write("                                            ");
 
-                                                Puesto puesto= new Puesto();
-                                                HashMap<String,String> drop= puesto.seleccionar();
-                                                for(String i:drop.keySet())
-                                                {
-                                                    out.println("<option value="+i+">"+drop.get(i)+ "</option>");
+                                                Puesto puesto = new Puesto();
+                                                HashMap<String, String> drop = puesto.seleccionar();
+                                                for (String i : drop.keySet()) {
+                                                    out.println("<option value=" + i + ">" + drop.get(i) + "</option>");
                                                 }
                                             
       out.write("\n");
@@ -193,9 +231,9 @@ public final class index_005fempleado_jsp extends org.apache.jasper.runtime.Http
       out.write("                                <div class=\" formulario__grupo-btn-enviar\">\n");
       out.write("                                    <button  name=\"btn_agregar\" id=\"btn_agregar\" value=\"agregar\"    class=\"formulario__btn \" >Agregar</button>\n");
       out.write("                                    <button  name=\"btn_modificar\" id=\"btn_modificar\" value=\"modificar\" class=\"formulario__btn1\" >Modificar</button>\n");
-      out.write("                                    <button  name=\"btn_eliminar\" id=\"btn_eliminar\" value=\"eliminar\" class=\"formulario__btn2\"  onclick =\"javascript:if (!confirm('¿Desea Eliminar'))\n");
-      out.write("                                                return false\"  >Eliminar</button>\n");
+      out.write("                                    <button  name=\"btn_2\" id=\"btn_2\" onclick=\"return confirmar2();\" value=\"eliminar\"class=\"formulario__btn2\" > Eliminar </button>\n");
       out.write("                                </div>\n");
+      out.write("                                <button name=\"btn_eliminar\" id=\"btn_eliminar\"  value=\"eliminar\"class=\"btn_falso\" > </button>\n");
       out.write("                                <br>\n");
       out.write("                            </form>\n");
       out.write("                            <div class=\"modal-footer\">\n");
@@ -222,35 +260,35 @@ public final class index_005fempleado_jsp extends org.apache.jasper.runtime.Http
       out.write("                    </tr>\n");
       out.write("                </thead>\n");
       out.write("                <tbody class=\"formula_tabla\" id=\"tbl_empleados\">\n");
-      out.write("\n");
       out.write("                    ");
- 
-                    Empleado empleado = new Empleado();
-                    DefaultTableModel tabla = new DefaultTableModel();
-                    tabla= empleado.leer3();
-                    int cero=0;
-                    for (int r=0; r<tabla.getRowCount(); r++){
-                    cero++;
-                    out.println("<tr data-id=" + tabla.getValueAt(r,0) + " data-id_pues=" + tabla.getValueAt(r,11) + " >");
-                    out.println("<td>" + tabla.getValueAt(r,1) + "</td>");
-                    out.println("<td>" + tabla.getValueAt(r,2) + "</td>");
-                    out.println("<td>" + tabla.getValueAt(r,3) + "</td>");             
-                    out.println("<td>" + tabla.getValueAt(r,4) + "</td>");
-                    out.println("<td>" + tabla.getValueAt(r,5) + "</td>");     
-                    out.println("<td>" + tabla.getValueAt(r,6) + "</td>");
-                    out.println("<td>" + tabla.getValueAt(r,7) + "</td>");
-                    out.println("<td>" + tabla.getValueAt(r,8) + "</td>");
-                    out.println("<td>" + tabla.getValueAt(r,9) + "</td>");
-                    out.println("<td>" + tabla.getValueAt(r,10) + "</td>");
-                    out.println("</tr>");
-                    }
-                   out.println("<div class='contador_lbl'>"+"<h5 >"+"No. Empleados "+cero+"</h5>"+"</div>");
+
+                        Empleado empleado = new Empleado();
+                        DefaultTableModel tabla = new DefaultTableModel();
+                        tabla = empleado.leer3();
+                        int cero = 0;
+                        for (int r = 0; r < tabla.getRowCount(); r++) {
+                            cero++;
+                            out.println("<tr data-id=" + tabla.getValueAt(r, 0) + " data-id_pues=" + tabla.getValueAt(r, 11) + " >");
+                            out.println("<td>" + tabla.getValueAt(r, 1) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 2) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 3) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 4) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 5) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 6) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 7) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 8) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 9) + "</td>");
+                            out.println("<td>" + tabla.getValueAt(r, 10) + "</td>");
+                            out.println("</tr>");
+                        }
+                        out.println("<div class='contador_lbl'>" + "<h5 >" + "No. Empleados " + cero + "</h5>" + "</div>");
                     
       out.write("\n");
       out.write("                </tbody>\n");
       out.write("            </table>\n");
       out.write("\n");
       out.write("            <script src=\"https://kit.fontawesome.com/2c36e9b7b1.js\" crossorigin=\"anonymous\"></script>\n");
+      out.write("            <script src=\"https://cdn.jsdelivr.net/npm/sweetalert2@11\"></script>\n");
       out.write("            <script type = \"text/javascript \" src = \"js/formulario_empleado.js\" > </script> \n");
       out.write("        </div>\n");
       out.write("    </body>\n");

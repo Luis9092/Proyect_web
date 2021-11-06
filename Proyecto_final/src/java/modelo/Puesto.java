@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class Puesto {
     private String puesto;
     private int id_puesto;
-Conexion cn;
+    Conexion cn;
 public Puesto(){   
 }
     public Puesto(int id_puesto,String puesto) {

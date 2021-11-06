@@ -7,10 +7,10 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Puesto;
@@ -37,10 +37,10 @@ public class src_puesto extends HttpServlet {
             if ("agregar".equals(request.getParameter("btn_agregar"))) {
 
                 if (puesto.agregar() > 0) {
-                   Thread.sleep(1000);
+                   Thread.sleep(2000);
                     response.sendRedirect("index_puesto.jsp");
                  } else {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     response.sendRedirect("index_puesto.jsp");
                 }
             }
@@ -58,10 +58,8 @@ public class src_puesto extends HttpServlet {
             if ("eliminar".equals(request.getParameter("btn_eliminar"))) {
 
                 if (puesto.eliminar() > 0) {
-                Thread.sleep(2000);
-                  out.println("<h1>Exito</h1>");
-          
-                    response.sendRedirect("index_puesto.jsp");
+                      Thread.sleep(2000);
+                   response.sendRedirect("index_puesto.jsp");
                     
                     } else {
                 Thread.sleep(2000);
@@ -75,16 +73,7 @@ public class src_puesto extends HttpServlet {
             out.println("</html>");
         }
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -95,14 +84,7 @@ public class src_puesto extends HttpServlet {
         }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

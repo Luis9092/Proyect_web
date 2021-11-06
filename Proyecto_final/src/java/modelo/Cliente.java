@@ -1,4 +1,3 @@
-
 package modelo;
 
 import java.awt.HeadlessException;
@@ -7,17 +6,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
  * @author Luis Fernando Paxel
  */
-public class Cliente extends Persona{
-  private int genero;
-  private String nit, correo_electronico,fecha_ingreso;
- public Cliente(){}
-Conexion cn;
-    public Cliente(int id, String nombres, String apellidos, String nit, int genero,  String telefono,String correo_electronico, String fecha_ingreso,String direccion, String fecha_nacimiento) {
+public class Cliente extends Persona {
+
+    private int genero;
+    private String nit, correo_electronico, fecha_ingreso;
+
+    public Cliente() {
+    }
+    Conexion cn;
+
+    public Cliente(int id, String nombres, String apellidos, String nit, int genero, String telefono, String correo_electronico, String fecha_ingreso, String direccion, String fecha_nacimiento) {
         super(id, nombres, apellidos, direccion, telefono, fecha_nacimiento);
         this.genero = genero;
         this.nit = nit;
@@ -57,7 +61,7 @@ Conexion cn;
         this.fecha_ingreso = fecha_ingreso;
     }
 
-     @Override
+    @Override
     public int agregar() {
         int retorno;
 
@@ -89,7 +93,7 @@ Conexion cn;
         }
     }
 
-     public DefaultTableModel leer3() {
+    public DefaultTableModel leer3() {
         DefaultTableModel tabla = new DefaultTableModel();
         String uno[] = {"Masculino", "Femenino"};
         String elegir;
@@ -98,7 +102,7 @@ Conexion cn;
             cn.abrirCon();
             String query = "select idCliente as id, Nombres,Apellidos,NIT,Genero,Telefono,Correo_electronico,Fecha_ingreso from clientes;";
             ResultSet consulta = cn.conexiondb.createStatement().executeQuery(query);
-            String encabezado[] = {"Id", "Nombres", "Apellidos", "Nit","Genero", "Telefono", "Correo","Fecha Ingreso"};
+            String encabezado[] = {"Id", "Nombres", "Apellidos", "Nit", "Genero", "Telefono", "Correo", "Fecha Ingreso"};
             tabla.setColumnIdentifiers(encabezado);
             String datos[] = new String[9];
             while (consulta.next()) {
@@ -117,7 +121,7 @@ Conexion cn;
                 datos[5] = consulta.getString("Telefono");
                 datos[6] = consulta.getString("Correo_electronico");
                 datos[7] = consulta.getString("Fecha_ingreso");
-         
+
                 tabla.addRow(datos);
             }
             cn.cerrarCon();
@@ -128,9 +132,8 @@ Conexion cn;
         return tabla;
     }
 
- 
-  @Override
- public int modificar() {
+    @Override
+    public int modificar() {
         int retorno;
 
         {
@@ -158,7 +161,8 @@ Conexion cn;
             return retorno;
         }
     }
-  @Override
+
+    @Override
     public int eliminar() {
         int retorno;
 
@@ -178,7 +182,41 @@ Conexion cn;
 
             }
             return retorno;
-        } 
-       }
+        }
+    }
+
+    public HashMap seleccionar2() {
+        HashMap<String, String> drop = new HashMap();
+        try {
+            cn = new Conexion();
+            String query = ("select idCliente as id, Nombres,Apellidos from clientes;");
+            cn.abrirCon();
+            ResultSet consulta = cn.conexiondb.createStatement().executeQuery(query);
+            while (consulta.next()) {
+                drop.put(consulta.getString("id"), consulta.getString("Nombres") + " " + consulta.getString("Apellidos"));
+            }
+            cn.cerrarCon();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return drop;
+    }
+    
+      public HashMap seleccionar() {
+        HashMap<String, String> drop = new HashMap();
+        try {
+            cn = new Conexion();
+            String query = ("select idCliente as id, Nombres,Apellidos,NIT from clientes;");
+            cn.abrirCon();
+            ResultSet consulta = cn.conexiondb.createStatement().executeQuery(query);
+            while (consulta.next()) {
+                drop.put(consulta.getString("id"), consulta.getString("Nombres") + " " + consulta.getString("Apellidos") + ", " + consulta.getString("NIT"));
+            }
+            cn.cerrarCon();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return drop;
+    }
 
 }

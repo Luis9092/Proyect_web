@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -114,7 +115,7 @@ public class Proveedor extends Persona {
             return retorno;
         }
     }
-    
+
     @Override
     public int eliminar() {
         int retorno;
@@ -135,8 +136,24 @@ public class Proveedor extends Persona {
 
             }
             return retorno;
-        } 
-       }
+        }
+    }
 
+    public HashMap seleccionar() {
+        HashMap<String, String> drop = new HashMap();
+        try {
+            cn = new Conexion();
+            String query = ("select idProveedore as id, Proveedor from proveedores;");
+            cn.abrirCon();
+            ResultSet consulta = cn.conexiondb.createStatement().executeQuery(query);
+            while (consulta.next()) {
+                drop.put(consulta.getString("id"), consulta.getString("Proveedor"));
+            }
+            cn.cerrarCon();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return drop;
+    }
 
 }

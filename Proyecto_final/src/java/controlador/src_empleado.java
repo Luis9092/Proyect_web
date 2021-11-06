@@ -2,10 +2,10 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Empleado;
@@ -16,7 +16,6 @@ import modelo.Empleado;
 public class src_empleado extends HttpServlet {
 
     Empleado empleado;
-    private String uno ="2021-04-15 19:30:31";
    private int genero;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, InterruptedException {

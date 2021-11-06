@@ -1,0 +1,53 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 3 / 2 / 4; }
+    .div3 { grid-area: 3 / 1 / 4 / 2; }
+    .div4 { grid-area: 3 / 3 / 4 / 4; }
+    .div5 { grid-area: 2 / 2 / 3 / 3; }
+    .div1{
+        background:#e9967a ;
+    }
+    .div2{
+        background:#e9967a ;
+    }
+
+    .div3{
+        background:#e9967a ;
+    }
+
+    .div4{
+        background:#e9967a ;
+    }
+    .div5{
+        background:#e9967a ;
+    }
+
+   .contenedor{
+    background-color: #fafafa;
+    margin: 6rem;
+    padding: 3rem;
+    border: 3px solid #e9967a ;
+    /* IMPORTANTE */
+    text-align: center;
+   }
+   
+   
+.enlaze_modal{
+    height: 60px;
+    width: 71%; 
+    background:#778899;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 19px;
+    border: 1px solid#778899; 	
+    border-radius:4px;
+    cursor: pointer;
+    transition: .1s ease all;
+}

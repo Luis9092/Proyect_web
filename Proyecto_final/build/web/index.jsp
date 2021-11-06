@@ -3,35 +3,45 @@
     Created on : Sep 23, 2021, 6:27:41 PM
     Author     : Luis Fernando Paxel
 --%>
-<%@page  import="modelo.Puesto" %>
-<%@page import="java.util.HashMap" %>
-<%@page import="javax.swing.table.DefaultTableModel" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu_control</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-         <link rel="stylesheet" href="css/estilo_puesto.css">
+        <title>LogIn</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/estilos.css" media="all">
     </head>
-    <body>
-        <div class="container" >
-            <br><br><br><br><br>
-            <div class  ="list-group" >
-                <a href="index_empleado.jsp"  class="list-group-item bg-success text-center text-white list-group-item-action">Fomulario Empleados</a>
-                <a href="index_cliente.jsp"  class="list-group-item btn btn-danger bg-info btn text-center text-white btn btn-success list-group-item-action">Formulario Clientes</a>
-                <a href="index_prooveedores.jsp"  class="list-group-item text-center bg-danger text-white list-group-item-action">Formulario Proveedores</a>
-                <a href="index_puesto.jsp"  class="list-group-item text-center bg-warning text-white list-group-item-action">Formulario Puestos</a>
-               <a href="https://matias.ma/nsfw/"  class="list-group-item text-center bg-primary text-white list-group-item-action">Relajata Crack \°o°/ </a>
-
-            </div>
-            <br><br><br><br><br>
-        </div>
+    <body onpageshow="cargarLogin()">
+        <nav class="menu" id="menu">
+            <img src="imagenes/umg.png" alt="logo" class="logo" align="left">
+            <ul>
+                <li><a href="#" onclick="cargarLogin()">Iniciar Sesión</a></li>
+                <li><a href="#" onclick="cargarValidarUsuario()">Registrarse</a></li>
+            </ul>
+        </nav>
+        
+        <section class="contenidoDinamico" id="contenidoDinamico">
+            
+        </section>
+        <footer class="piedepagina" id="piedepagina">
+            Derechos Reservados ©Grupo Onitech <br>
+            - Luis Paxel  
+            - Jose Godoy  
+            - Jorge Nuñez  
+            - Walter Monge  
+            - Oliver Kies - <br>
+            www.onitech.com <br>
+            Ver 0.0.0.2 
+        </footer>  
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
+    <script src="js/funcionesIndex.js"></script>
+    <script src="js/funcionesLogin.js"></script>
+    <script src="js/funcionesValidarUsuario.js"></script>
 </html>

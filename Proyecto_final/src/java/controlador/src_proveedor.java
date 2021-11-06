@@ -2,10 +2,12 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Proveedor;
 
 /**
@@ -16,7 +18,7 @@ public class src_proveedor extends HttpServlet {
     Proveedor pro1;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, InterruptedException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -31,8 +33,8 @@ public class src_proveedor extends HttpServlet {
             if ("agregar".equals(request.getParameter("btn_agregar"))) {
 
                 if (pro1.agregar() > 0) {
-                    out.println("<h1>Registro Ingresado Correctamente :vv</h1>");
-                    out.println("<a href ='index_prooveedores.jsp' > Regresar </a>");
+                      Thread.sleep(2000);
+                    response.sendRedirect("index_prooveedores.jsp");
                 } else {
                     out.println("<h1>Error carnal</h1>");
                     out.println("<a href ='index_prooveedores.jsp '> Regresar </a>");
@@ -42,8 +44,8 @@ public class src_proveedor extends HttpServlet {
             if ("modificar".equals(request.getParameter("btn_modificar"))) {
 
                 if (pro1.modificar() > 0) {
-                    out.println("<h1>Registro Modificado Correctamente :vv</h1>");
-                    out.println("<a href ='index_prooveedores.jsp '> Regresar </a>");
+                      Thread.sleep(2000);
+                    response.sendRedirect("index_prooveedores.jsp");
                 } else {
                     out.println("<h1>Error carnal</h1>");
                     out.println("<a href ='index_prooveedores.jsp '> Regresar </a>");
@@ -52,8 +54,8 @@ public class src_proveedor extends HttpServlet {
             if ("eliminar".equals(request.getParameter("btn_eliminar"))) {
 
                 if (pro1.eliminar() > 0) {
-                    out.println("<h1>Registro eliminado Correctamente :vv</h1>");
-                    out.println("<a href ='index_prooveedores.jsp '> Regresar </a>");
+                   Thread.sleep(2000);
+                    response.sendRedirect("index_prooveedores.jsp");
                 } else {
                     out.println("<h1>Error carnal</h1>");
                     out.println("<a href ='index_prooveedores.jsp '> Regresar </a>");
@@ -77,7 +79,11 @@ public class src_proveedor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(src_proveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -91,7 +97,11 @@ public class src_proveedor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(src_proveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * @author Luis Fernando Paxel
@@ -95,7 +96,6 @@ public class Empleado extends Persona {
                 cn.abrirCon();
                 parametro = (PreparedStatement) cn.conexiondb.prepareStatement(query);
                 parametro.setString(1, this.getNombres());
-
                 parametro.setString(2, this.getApellidos());
                 parametro.setString(3, this.getDireccion());
                 parametro.setString(4, this.getTelefono());
@@ -192,8 +192,9 @@ public class Empleado extends Persona {
             return retorno;
         }
     }
+
     @Override
-   public int eliminar() {
+    public int eliminar() {
         int retorno;
 
         {
@@ -212,7 +213,43 @@ public class Empleado extends Persona {
 
             }
             return retorno;
-        } 
-       }
+        }
+    }
+    
+    
+       public HashMap seleccionar(){
+        HashMap <String, String> drop = new HashMap();
+    try{
+        cn = new Conexion();
+        String query=("select idEmpleado as id, m.Nombres, m.Apellidos,P.Puesto from empleados as m, puestos as P where m.id_Puesto=P.Idpuesto;");
+        cn.abrirCon();
+        ResultSet consulta = cn.conexiondb.createStatement().executeQuery(query);
+        while(consulta.next()){
+            drop.put(consulta.getString("id"), consulta.getString("Nombres")+" "+consulta.getString("Apellidos")+", "+consulta.getString("Puesto"));
+        }
+        cn.cerrarCon();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+        return drop;
+    }
+       
+         public HashMap seleccionar2(){
+        HashMap <String, String> drop = new HashMap();
+    try{
+        cn = new Conexion();
+        String query=("select idEmpleado as id, m.Nombres, m.Apellidos  from empleados as m, puestos as P where m.id_Puesto=P.Idpuesto;");
+        cn.abrirCon();
+        ResultSet consulta = cn.conexiondb.createStatement().executeQuery(query);
+        while(consulta.next()){
+            drop.put(consulta.getString("id"), consulta.getString("Nombres")+" "+consulta.getString("Apellidos") );
+        }
+        cn.cerrarCon();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+    }
+        return drop;
+    }
+
 
 }

@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
  * @author Luis Fernando Paxel
  */
 public class Conexion {
+  
     public Connection conexiondb;
     public final String bd ="db_punto_venta";
     public final String urlCon= String.format("jdbc:mysql://localhost:3306/%s",bd);
